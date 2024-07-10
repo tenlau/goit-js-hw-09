@@ -1,6 +1,4 @@
-import Notiflix from 'notiflix';
-
-document.querySelector('.form').addEventListener('submit', event => {
+document.querySelector('.form').addEventListener('submit', (event) => {
   event.preventDefault();
 
   const delay = parseInt(event.target.delay.value);
@@ -13,10 +11,10 @@ document.querySelector('.form').addEventListener('submit', event => {
 
     createPromise(position, currentDelay)
       .then(({ position, delay }) => {
-        console.log(`✅ Fulfilled promise ${position} in ${delay}ms`);
+        Notiflix.Notify.success(`✅ Fulfilled promise ${position} in ${delay}ms`);
       })
       .catch(({ position, delay }) => {
-        console.log(`❌ Rejected promise ${position} in ${delay}ms`);
+        Notiflix.Notify.failure(`❌ Rejected promise ${position} in ${delay}ms`);
       });
   }
 });
